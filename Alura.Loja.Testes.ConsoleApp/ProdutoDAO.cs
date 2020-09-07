@@ -105,5 +105,10 @@ namespace Alura.Loja.Testes.ConsoleApp
 
             return lista;
         }
+
+        public Produto Get(Produto p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Alura.Loja.Testes.ConsoleApp
         void Adicionar(Produto p);
         void Remover(Produto p);
         void Atualizar(Produto p);
+        Produto Get(Produto p);
         IList<Produto> Produtos();
     }
 }
