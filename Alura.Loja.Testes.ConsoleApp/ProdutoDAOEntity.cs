@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,11 +44,6 @@ namespace Alura.Loja.Testes.ConsoleApp
             _context.SaveChanges();
         }
 
-        public IList<Produto> GetAll()
-        {
-            return GetAll();
-        }
-
         public Produto Get(Produto p)
         {
             return _context.Produtos.Find(p.Id);
@@ -57,14 +53,15 @@ namespace Alura.Loja.Testes.ConsoleApp
             return _context.Produtos.Find(id);
         }
 
-        private bool filterByName(string name, Produto p)
+        private Expression<Func<Produto, bool>> filterByNameExpression(string name)
         {
-            return name == p.Nome;
+            Expression<Func<Produto, bool>> exp = (p) => name == p.Nome;
+            return exp;
         }
 
         public IList<Produto> Get(string name)
         {
-            return Get(filterByName, name);
+            return Get(filterByNameExpression(name));
         }
 
         //private IList<Produto> Get<T>(Func<T, Produto, bool> filterFunction, T input)

@@ -13,5 +13,6 @@ namespace Alura.Loja.Testes.ConsoleApp
         void Atualizar(Produto p);
         Produto Get(Produto p);
         IList<Produto> Produtos();
+        IList<Produto> Get(string name);
     }
 }

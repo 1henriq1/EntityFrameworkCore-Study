@@ -11,8 +11,8 @@ namespace Alura.Loja.Testes.ConsoleApp
         static void Main(string[] args)
         {
             //GravarUsandoAdoNet();
-            //GravarUsandoEntity();
-            //RecuperarUsandoEntity();
+            GravarUsandoEntity();
+            RecuperarUsandoEntity();
             //RemoverUsandoEntity();
             //RecuperarUsandoEntity();
         }
@@ -21,8 +21,11 @@ namespace Alura.Loja.Testes.ConsoleApp
         {
             using (var context = new LojaContext())
             {
-                var produto = context.Produtos.First();
-                Console.WriteLine("Produto encontrado => " + produto.Nome);
+                //var produto = context.Produtos.First();
+                //Console.WriteLine("Produto encontrado => " + produto.Nome);
+                var dao = new ProdutoDAOEntity(context);
+                var x = dao.Get("Harry Potter e a Ordem da Fênix");
+
             }
         }
         private static void RemoverUsandoEntity()
@@ -47,17 +50,5 @@ namespace Alura.Loja.Testes.ConsoleApp
             }
         }
 
-        private static void GravarUsandoAdoNet()
-        {
-            Produto p = new Produto();
-            p.Nome = "Harry Potter e a Ordem da Fênix";
-            p.Categoria = "Livros";
-            p.Preco = 19.89;
-
-            using (var repo = new ProdutoDAO())
-            {
-                repo.Adicionar(p);
-            }
-        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Alura.Loja.Testes.ConsoleApp
 {
@@ -12,9 +13,9 @@ namespace Alura.Loja.Testes.ConsoleApp
         {
             _table = table;
         }
-        protected IList<T> Get<Y>(Func<Y, T, bool> filterFunction, Y input)
+        protected IList<T> Get(Expression<Func<T, bool>> filterFunction)
         {
-            return _table.Where(w => filterFunction(input, w)).ToList();
+            return _table.Where(filterFunction).ToList();
         }
 
         protected IList<T> GetAll()

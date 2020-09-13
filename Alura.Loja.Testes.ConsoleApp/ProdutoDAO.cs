@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Alura.Loja.Testes.ConsoleApp
 {
-    internal class ProdutoDAO : IProdutoDAO, IDisposable
+    internal class ProdutoDAO : IDisposable
     {
         private SqlConnection conexao;
 
